@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="digital_cal_logo.png" type="image/x-icon">
+    <title>Digital Clock</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: linear-gradient(#000,#024f79);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+        h1{
+            font-size: 56px;
+            font-family: monospace;
+            text-align: center;
+            text-decoration: underline;
+            color: #09ffe6; 
+            text-shadow: 2px 2px 4px rgb(255, 106, 56);
+        }
+        #clock {
+            font-size: 52px;
+            font-family: monospace;
+            text-align: center;
+            color: #ffffff; 
+            text-shadow: 2px 2px 4px rgb(94, 244, 255);
+        }
+        .reflection {
+            font-size: 48px;
+            font-family: monospace;
+            text-align: center;
+            position: absolute;
+            top: 54%;
+            transform: scaleY(-1);
+            transform-origin: bottom;
+            opacity: 0.1; /* Adjust the reflection opacity as needed */
+            color: #d0cdcd; /* Reflection color */
+        }
+        h6{
+            position: absolute;
+            bottom: 0;
+            font-size: 20px;
+            font-family: monospace;
+            text-align: center;
+            color: #ffffff; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div id="clock"></div>
+    <div class="reflection"></div>
+    <h6>Developer: Vanshika Nahar</h6>
+    <script>
+        const digitalClock=()=>{
+            const present = new Date();
+            const hr = present.getHours().toString().padStart(2,"0");
+            const min = present.getMinutes().toString().padStart(2,"0");
+            const sec = present.getSeconds().toString().padStart(2,"0");
+
+            const timeStr = `${hr}:${min}:${sec}`;
+
+            document.getElementById("clock").textContent = timeStr;
+            document.querySelector('.reflection').textContent = timeStr;
+        }
+
+        setInterval(digitalClock,1000);
+        digitalClock();
+    </script>
+</body>
+</html>
